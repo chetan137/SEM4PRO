@@ -10,7 +10,7 @@ import {
 import { motion } from "framer-motion";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import Navbar from "../components/Navbar";
-import { Footer } from "antd/es/layout/layout";
+import Footer  from "../components/Footer";
 
 const courseLessons = [
   {
@@ -58,7 +58,8 @@ const VideoPlayerPage: React.FC = () => {
           width: "99vw",
           marginTop: "3rem",
 
-          background: "linear-gradient(135deg,rgb(8, 3, 58),rgb(77, 99, 43),rgb(1, 1, 18))",
+          background:
+            "linear-gradient(135deg,rgb(8, 3, 58),rgb(77, 99, 43),rgb(1, 1, 18))",
           color: "white",
           overflow: "hidden",
         }}
@@ -86,7 +87,7 @@ const VideoPlayerPage: React.FC = () => {
             <List>
               {courseLessons.map((lesson, index) => (
                 <ListItem
-                  button
+                  component="button" // Explicitly set the component
                   key={index}
                   onClick={() => setSelectedLesson(lesson)}
                   sx={{
@@ -94,7 +95,7 @@ const VideoPlayerPage: React.FC = () => {
                     borderRadius: "5px",
                     transition: "0.3s",
                     backgroundColor:
-                      selectedLesson.title === lesson.title
+                      selectedLesson?.title === lesson.title
                         ? "rgba(255, 255, 255, 0.3)"
                         : "transparent",
                     "&:hover": { bgcolor: "rgba(255, 255, 255, 0.2)" },
@@ -189,7 +190,7 @@ const VideoPlayerPage: React.FC = () => {
           </Box>
         </motion.div>
       </Box>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
