@@ -5,7 +5,9 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebaseConfig.tsx";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/material";
-import backgroundImage from "../assets/log.jpg";
+import backgroundImage from "../assets/log2.jpg";
+// import { motion } from "framer-motion";
+// import { LampContainer } from "@/components/ui/lamp";
 
 const { Title, Text } = Typography;
 
@@ -77,6 +79,20 @@ const Login: React.FC = () => {
             boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
           }}
         >
+          {/* <LampContainer>
+            <motion.h1
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+            >
+              Build lamps <br /> the right way
+            </motion.h1>
+          </LampContainer> */}
           <Title level={2} style={{ color: "#fff", fontWeight: "bold" }}>
             Welcome Back
           </Title>

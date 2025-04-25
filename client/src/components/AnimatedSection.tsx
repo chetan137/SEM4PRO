@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Box, Typography } from "@mui/material";
-import Typical from "react-typical";
 import backgroundImage from "../assets/h2.jpg"; // Import the image
 
 const AnimatedSection: React.FC = () => {
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const texts = [
+    "Explore Our Interactive Learning Platform",
+    "Enhance Your Skills with Us!",
+    "Join a Community of Lifelong Learners",
+    "Transform Your Future with Knowledge",
+    "Start Your Learning Journey Today!",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    }, 3000); // Change text every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [texts.length]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -42,38 +58,34 @@ const AnimatedSection: React.FC = () => {
           overflow: "hidden",
         }}
       >
-        {/* Typing Effect */}
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: "bold",
-            background: "linear-gradient(90deg, #00e5ff, #ff00ff)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            fontSize: "2rem",
-            whiteSpace: "nowrap",
-            display: "inline-block",
+        {/* Sliding Text Animation */}
+        <motion.div
+          key={currentTextIndex}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5 }}
+          style={{
+            position: "absolute",
             width: "100%",
             textAlign: "center",
           }}
         >
-          <Typical
-            steps={[
-              "Explore Our Interactive Learning Platform",
-              2000,
-              "Enhance Your Skills with Us!",
-              2000,
-              "Join a Community of Lifelong Learners",
-              2000,
-              "Transform Your Future with Knowledge",
-              2000,
-              "Start Your Learning Journey Today!",
-              2000,
-            ]}
-            loop={Infinity}
-            wrapper="span"
-          />
-        </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              background: "linear-gradient(90deg, #00e5ff, #ff00ff)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              fontSize: "2rem",
+              whiteSpace: "nowrap",
+              display: "inline-block",
+            }}
+          >
+            {texts[currentTextIndex]}
+          </Typography>
+        </motion.div>
 
         {/* Mirror Reflection */}
         <Box
@@ -98,26 +110,10 @@ const AnimatedSection: React.FC = () => {
               fontSize: "2rem",
               whiteSpace: "nowrap",
               display: "inline-block",
-            
               textAlign: "center",
             }}
           >
-            <Typical
-              steps={[
-                "Explore Our Interactive Learning Platform",
-                2000,
-                "Enhance Your Skills with Us!",
-                2000,
-                "Join a Community of Lifelong Learners",
-                2000,
-                "Transform Your Future with Knowledge",
-                2000,
-                "Start Your Learning Journey Today!",
-                2000,
-              ]}
-              loop={Infinity}
-              wrapper="span"
-            />
+            {texts[currentTextIndex]}
           </Typography>
         </Box>
       </Box>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
+"use client";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CourseCard from "../components/CourseCard";
@@ -8,8 +9,10 @@ import localImage from "../assets/i.jpg";
 import localImage1 from "../assets/i2.jpg";
 import localImage2 from "../assets/i3.jpg";
 import localImage3 from "../assets/i4.jpg";
+import "../styles/tailwind.css"
 
-const courses = [
+
+ const courses = [
   {
     title: "Learn all about Microprocessor",
     image: localImage,
@@ -36,6 +39,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Navbar />
+
       <Box sx={{ mt: 10 }}>
         <AnimatedSection />
         <Grid container spacing={2} justifyContent="center">
@@ -47,8 +51,10 @@ const Dashboard: React.FC = () => {
         </Grid>
       </Box>
       <Footer />
+
+
     </>
-  );
+  )
 };
 
 export default Dashboard;
